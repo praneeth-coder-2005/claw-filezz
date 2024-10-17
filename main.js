@@ -1,84 +1,60 @@
-let menu = document.querySelector('#menu-bars');
-let navbar = document.querySelector('.navbar');
+document.addEventListener("DOMContentLoaded", function() {
+    const adminForm = document.getElementById('adminForm');
+    const messageDiv = document.getElementById('message');
 
-menu.onclick = () =>{
-  menu.classList.toggle('fa-times');
-  navbar.classList.toggle('active');
-}
+    adminForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
+        // Collect form data
+        const postTitle = document.getElementById('postTitle').value;
+        const movieTitle = document.getElementById('movieTitle').value;
+        const description = document.getElementById('description').value;
+        const category = document.getElementById('category').value;
 
-var swiper = new Swiper(".home-slider", {
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-      delay: 7500,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    loop:true,
-  });
+        // Basic validation
+        if (!postTitle || !movieTitle || !description || !category) {
+            messageDiv.textContent = "All fields are required!";
+            messageDiv.style.color = 'red';
+            return;
+        }
 
-  var swiper = new Swiper(".anime-slider", {
-    slidesPerView: 4,
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-      delay: 4500,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    loop:true
-  });
+        // Data structure for the new post/movie
+        const newPost = {
+            postTitle,
+            movieTitle,
+            description,
+            category,
+            createdAt: new Date().toISOString()
+        };
 
+        // Option 1: Storing data locally (localStorage)
+        let posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.push(newPost);
+        localStorage.setItem('posts', JSON.stringify(posts));
 
-  var swiper = new Swiper(".action-slider", {
-    slidesPerView: 4,
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-      delay: 3500,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    loop:true
-  });
+        // Option 2: Send data to backend (if applicable)
+        /*
+        fetch('http://api.yoursite.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newPost),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+        */
 
+        // Success message
+        messageDiv.textContent = "New post/movie added successfully!";
+        messageDiv.style.color = 'green';
 
-  var swiper = new Swiper(".child-slider", {
-    slidesPerView: 4,
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    loop:true
-  });
-
-  var swiper = new Swiper(".family-slider", {
-    slidesPerView: 4,
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-      delay: 1500,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    loop:true
-  });
+        // Clear form fields
+        adminForm.reset();
+    });
+});
