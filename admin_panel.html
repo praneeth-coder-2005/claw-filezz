@@ -1,0 +1,45 @@
+# Creating the new admin panel HTML file with a form for adding new posts and movies
+
+admin_panel_html = '''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Add Post or Movie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Admin Panel</h1>
+        <form id="adminForm">
+            <label for="postTitle">Post Title:</label><br>
+            <input type="text" id="postTitle" name="postTitle" required><br><br>
+
+            <label for="movieTitle">Movie Title:</label><br>
+            <input type="text" id="movieTitle" name="movieTitle" required><br><br>
+
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" required></textarea><br><br>
+
+            <label for="category">Category:</label><br>
+            <input type="text" id="category" name="category" required><br><br>
+
+            <button type="submit">Add Post/Movie</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+'''
+
+# Saving the admin panel HTML file in the same directory
+admin_panel_file_path = os.path.join(claw_folder_path, 'admin.html')
+
+with open(admin_panel_file_path, 'w') as file:
+    file.write(admin_panel_html)
+
+# Check if the admin.html file is successfully created
+os.listdir(claw_folder_path)
