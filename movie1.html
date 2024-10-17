@@ -3,28 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie1</title>
+    <title>Download Page - Movie Name</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Movie1</h1>
+        <h1>Movie/Series Title (Season 1-4)</h1>
         <a href="index (2).html">Back to Home</a>
     </header>
 
     <main>
-        <section>
-            <h2>About Movie1</h2>
-            <p>Here you can add details about Movie1, such as the synopsis, cast, release date, etc.</p>
-        </section>
+        <section class="download-section">
+            <h2>Download Links</h2>
 
-        <section>
-            <h2>Watch Trailer</h2>
-            <video width="320" height="240" controls>
-                <source src="movie1_trailer.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <!-- Example for Season 1 -->
+            <div class="season">
+                <h3>Season 1</h3>
+                <ul class="episode-list">
+                    <li>
+                        <span>Episode 1</span>
+                        <a href="download-link-720p" class="btn-download">720p</a>
+                        <a href="download-link-1080p" class="btn-download">1080p</a>
+                    </li>
+                    <li>
+                        <span>Episode 2</span>
+                        <a href="download-link-720p" class="btn-download">720p</a>
+                        <a href="download-link-1080p" class="btn-download">1080p</a>
+                    </li>
+                    <!-- Add more episodes as needed -->
+                </ul>
+            </div>
+
+            <!-- Repeat for other seasons -->
+            <div class="season">
+                <h3>Season 2</h3>
+                <ul class="episode-list">
+                    <li>
+                        <span>Episode 1</span>
+                        <a href="download-link-720p" class="btn-download">720p</a>
+                        <a href="download-link-1080p" class="btn-download">1080p</a>
+                    </li>
+                    <!-- More episodes -->
+                </ul>
+            </div>
+
         </section>
     </main>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        header a {
+            color: #ddd;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        main {
+            padding: 20px;
+        }
+        .download-section h2 {
+            color: #444;
+            margin-bottom: 20px;
+        }
+        .season h3 {
+            margin: 20px 0 10px;
+            color: #333;
+        }
+        .episode-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .episode-list li {
+            margin-bottom: 10px;
+        }
+        .episode-list span {
+            margin-right: 10px;
+        }
+        .btn-download {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn-download:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </body>
 </html>
